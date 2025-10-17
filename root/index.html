@@ -4,33 +4,28 @@
     <!-- Specify Character Encoding -->
     <meta charset="UTF-8" />
     <!-- Controls Layout on Browsers -->
-    <meta name="viewport" content="width=device-width" minimum-scale="1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <!-- Who are you? -->
     <meta name="author" content="Pushpinder Singh" />
     <!-- Attach Stylesheet -->
     <link rel="stylesheet" href="css/style.css"/>
 
     <!-- GSAP CDN Links -->
-    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
 
-    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/MotionPathHelper.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/MotionPathPlugin.min.js"></script>
     <!-- * Add your JS Script -->
     <script type="text/javascript" src="js/script.js" defer></script>
 
     <!-- Name Your Page -->
-    <title>Logo Animations</title>
+    <title>Family of Eateries - Logo Animations</title>
   </head>
 
   <body>
-    <section> 
-      <!-- Embed our SVG as an object. This allows us to edit the SVG and refer to it externally. But why? Now we don't have to copy and paste SVG code into our HTML -->
-      <!--object id='svgObj' data='img/catsper.svg' type="image/svg+xml"></object-->
-      <object id='foe' data='img/foe-logo.svg' type="image/svg+xml"></object>
-      <object id='hearthstone' data='img/hearth-&-stone.svg' type="image/svg+xml"></object> 
-      <object id='ceviche' data='img/ceviche.svg' type="image/svg+xml"></object>
-      <object id='fivevines' data='img/fivevines.svg' type="image/svg+xml"></object>
-   
-    </section>
+    <main>
+      <!-- The splash page object, which is shown first. -->
+      <object id='splash' data='img/splash.svg' type="image/svg+xml"></object>
+      <!-- The landing page object, initially hidden. -->
+      <object id='landing' data='img/landing.svg' type="image/svg+xml"></object>
+    </main>
   </body>
 </html>
