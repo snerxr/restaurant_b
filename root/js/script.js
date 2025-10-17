@@ -12,7 +12,7 @@ window.addEventListener("load", function() {
       const svgDoc = splash.contentDocument;
 
       const redFlourish = svgDoc.querySelectorAll(".cls-8");
-      const textPaths = svgDoc.querySelectorAll("#familyofeateries > g:nth-of-type(2) path");
+      const textPaths = svgDoc.querySelectorAll("#familyofeateries > g:nth-child(2) path");
 
       gsap.set([redFlourish, textPaths], { autoAlpha: 0, scale: 0.9, transformOrigin: "50% 50%" });
 
