@@ -1,15 +1,63 @@
-// Register GSAP plugins for advanced animations
-gsap.registerPlugin(MotionPathPlugin, MotionPathHelper);
+window.addEventListener("load", function() {
 
-// Get references to SVG object elements
-let ceviche = document.querySelector("#ceviche");
-let fivevines = document.querySelector("#fivevines");
-let foe = document.querySelector("#foe");
-let hearthstone = document.querySelector("#hearthstone");
+  const splash = document.querySelector("#splash");
+  const landing = document.querySelector("#landing");
 
-/* Hearth & Stone Logo Animation
- */
+  gsap.set(landing, { autoAlpha: 0 });
+
+  animateSplashPage();
+
+  function animateSplashPage() {
+    splash.addEventListener("load", function() {
+      const svgDoc = splash.contentDocument;
+
+      const redFlourish = svgDoc.querySelectorAll(".cls-8");
+      const textPaths = svgDoc.querySelectorAll("#familyofeateries > g:nth-of-type(2) path");
+
+      gsap.set([redFlourish, textPaths], { autoAlpha: 0, scale: 0.9, transformOrigin: "50% 50%" });
+
+      const masterTimeline = gsap.timeline({
+        delay: 0.5,
+        onComplete: function() {
+          gsap.to(splash, {
+            duration: 0.8,
+            autoAlpha: 0
+          });
+          gsap.to(landing, {
+            duration: 0.8,
+            autoAlpha: 1,
+            delay: 0.3
+          });
+          animateLandingPage();
+        }
+      });
+
+      masterTimeline.to(redFlourish, {
+        autoAlpha: 1,
+        scale: 1,
+        duration: 0.8,
+        ease: "power2.out",
+        stagger: 0.1
+      });
+
+      masterTimeline.to(textPaths, {
+        autoAlpha: 1,
+        scale: 1,
+        duration: 0.6,
+        ease: "power2.out",
+        stagger: 0.05
+      }, "-=0.6");
+    });
+  }
+
+  function animateLandingPage() {
+
+  }
+
+});
+
 function animateHearthStone() {
+  const hearthstone = document.querySelector("#hearthstone");
   // Wait for SVG to load before accessing internal elements
   hearthstone.addEventListener("load", function() {
     // Access the SVG document inside the object tag
@@ -225,6 +273,7 @@ function animateHearthStone() {
 /* Five Vines Logo Animation
  */
 function animateFiveVines() {
+  const fivevines = document.querySelector("#fivevines");
   fivevines.addEventListener("load", function() {
     const svgDoc = fivevines.contentDocument;
 
@@ -301,6 +350,7 @@ function animateFiveVines() {
 /* Ceviche Logo Animation
  */
 function animateCeviche() {
+  const ceviche = document.querySelector("#ceviche");
   ceviche.addEventListener("load", function() {
     const svgDoc = ceviche.contentDocument;
 
@@ -372,7 +422,7 @@ function animateCeviche() {
 /* Family of Eateries Logo Animation
  */
 function animateFamilyOfEateries() {
-  // Wait for SVG to load before accessing internal elements
+  const foe = document.querySelector("#foe");
   foe.addEventListener("load", function() {
     // Access the SVG document inside the object tag
     const svgDoc = foe.contentDocument;
@@ -604,10 +654,3 @@ function animateFamilyOfEateries() {
   });
 }
 
-// Initialize all animations when page loads
-window.addEventListener("DOMContentLoaded", function() {
-  animateHearthStone();
-  animateFiveVines();
-  animateCeviche();
-  animateFamilyOfEateries();
-});
